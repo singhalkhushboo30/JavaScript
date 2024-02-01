@@ -1,0 +1,106 @@
+______________________________
+|   Memory     |     Code    |
+|              |             |
+|key:value     | Code        |
+|              |             |
+|      a:10    |   __        |
+|  fn:{ }      |             |
+|              |             |
+|              |             |
+|              |             |
+|______________|_____________|
+
+Execution Context is created in two phases-
+1. Memory Creation
+2. Code Execution
+
+var n=2
+function square(num ){
+    var ans= num*num;
+    return ans
+
+}
+
+var square2=square(n)
+var square4=square(4)
+
+Global Context(whole code execution)
+Phase 1:(for memory)
+______________________________
+|   Memory     |     Code    |      
+|              |             |
+|n=undefined   |             |
+|              |             |
+|     square   |             |
+| square2:{ }  |             |
+|  undefined   |             |
+| square2:{ }  |             |
+|   undefined  |             |
+|______________|_____________|
+
+Phase 2:(for code)
+______________________________
+|   Memory     |     Code    |
+|              |             |
+|n=2           |             |   code execution for squaren and square4
+|              |             |
+|     square   |             |
+| square2:{ }  |             |
+|  function invoked   |      |
+| square2:{ }  |      |      |
+| fn invoked   |      |      |
+|______________|______|______|
+                      |
+
+                      Execution Conktext for square n
+ ______________________________   Phase 1 for squaren (memory)
+|   Memory     |     Code    |      
+|              |             |
+|num=undefined |     num*num |
+|              |             |
+|    ans       |             |
+|   undefined  |             |
+|______________|_____________|
+             |
+ ___________\_/________________   Phase 2 for squaren (code)
+|   Memory     |     Code    |      
+|              |             |
+|num=2         |     num*num |
+|              |             |
+|    ans       |             |
+|   4          |             |
+|______________|_____________|
+
+Execution context for sqaure4
+ ______________________________   Phase 1 for square4 (memory)
+|   Memory     |     Code    |      
+|              |             |
+|num=undefined |     num*num |
+|              |             |
+|    ans       |             |
+|   undefined  |             |
+|______________|_____________|
+             |
+ ___________\_/________________   Phase 2 for squaren (code)
+|   Memory     |     Code    |      
+|              |             |
+|num=4         |     num*num |
+|              |             |
+|    ans       |             |
+|   16         |             |
+|______________|_____________|
+
+
+****************
+CallStack manages execution context
+CallStack- Global Execution Context- ExecutionConytext1- Execution Context 1 remove- Execution Context 2- Execution Context 2 remove-
+Global Execution Conetext remove
+
+=> Call Stack maintains the order of execution of execution contexts
+
+Call Stack-
+1. Execution Context Stack
+2. Program Stack
+3. Control Stack
+4. Runtime gStack
+5. Machine Stack

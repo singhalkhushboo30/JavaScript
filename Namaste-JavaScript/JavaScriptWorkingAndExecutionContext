@@ -1,0 +1,21 @@
+- Everything in JavaScript happens inside an Execution Context
+
+______________________________
+|   Memory     |     Code    |
+|              |             |
+|key:value     | Code        |
+|              |             |
+|      a:10    |   __        |
+|  fn:{ }      |             |
+|              |             |
+|              |             |
+|              |             |
+|______________|_____________|
+
+Execution Context-
+__________________________________
+Memory Component(Variable Environment) contains variables and functions in a key-value format
+
+Code Component(Thread of Execution) is responsible for the whole code execution
+
+- JavaScript is a synchronous single-threaded language(executes one line at a time and in a order)
